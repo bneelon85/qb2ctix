@@ -13,7 +13,7 @@ const quickbase = new QuickBase({
 quickbase
   .api('API_DoQuery', {
     dbid: 'bigrk6igh',
-    clist: '2.6.69.70.71.72.73.74.155',
+    clist: '2.6.87.120.121.123.124.125.126.155',
     query: "{'2'.GTE.'" + (Date.now() - 60000) + "'}"
   })
   .then(result => {
@@ -40,7 +40,7 @@ quickbase
           mod_date: result.table.original.mod_date
         })
       )
-      console.log(result.table)
+      console.log(result.table.records)
       result.table.records.forEach(element => {
         if (element['155']) {
           var options = {
@@ -57,7 +57,16 @@ quickbase
                 Name: element['6'],
                 IsActive: 'true',
                 CompanyId: element['155'],
-                AddressInfo: [{ State: element['74'] }]
+                AddressInfo: [
+                  { 
+                    AddressTypeId:'3c65a1ac-04bb-4d66-870f-f98652f6ed70',
+                    Phone: element['87'],
+                    Address: element['121'],
+                    City: element['123'],
+                    State: element['124'],
+                    Zip: element['125'],
+                    Country: element['126']
+                  }]
               }
             }
           }
@@ -65,6 +74,7 @@ quickbase
             .then(function (parsedBody) {
               parsedBody = JSON.parse(parsedBody)
               console.log(parsedBody['json'])
+              console.log(parsedBody)
             })
             .catch(function (err) {
               console.log(err)
@@ -83,7 +93,16 @@ quickbase
               CompanyJsonString: {
                 Name: element['6'],
                 IsActive: 'true',
-                AddressInfo: [{ State: element['74'] }]
+                AddressInfo: [
+                  { 
+                    AddressTypeId:'3c65a1ac-04bb-4d66-870f-f98652f6ed70',
+                    Phone: element['87'],
+                    Address: element['121'],
+                    City: element['123'],
+                    State: element['124'],
+                    Zip: element['125'],
+                    Country: element['126']
+                  }]
               }
             }
           }
@@ -91,6 +110,7 @@ quickbase
             .then(function (parsedBody) {
               var ctixID = JSON.parse(parsedBody)['json']
               console.log(ctixID)
+              console.log(parsedBody)
               quickbase.api('API_EditRecord', {
                 dbid: 'bigrk6igh',
                 rid: element.rid,
