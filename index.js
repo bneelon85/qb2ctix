@@ -1,6 +1,10 @@
 const QuickBase = require('quickbase')
 const fs = require('fs')
 const rp = require('request-promise')
+const cron = require('node-cron')
+const express = require('express')
+const app = express()
+const port = 3128
 
 require('dotenv').config()
 
@@ -9,6 +13,12 @@ const quickbase = new QuickBase({
   appToken: process.env.QB_APP_TOKEN,
   userToken: process.env.QB_USER_TOKEN
 })
+
+
+
+cron.schedule('* * * * *', () => {
+  
+
 
 quickbase
   .api('API_DoQuery', {
@@ -124,3 +134,6 @@ quickbase
       })
     }
   })
+})
+
+app.listen(port, () => console.log(`Example app listening on port ${port}!`))
