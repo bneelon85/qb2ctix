@@ -1,0 +1,20 @@
+{
+  "name": "qb2ctix",
+  "version": "1.0.0",
+  "description": "quickbase integrations with cleargistix",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "bobby",
+  "license": "ISC",
+  "dependencies": {
+    "axios": "^0.18.0",
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "form-data": "^2.3.3",
+    "quickbase": "^2.10.2",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}

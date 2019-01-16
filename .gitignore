@@ -1,0 +1,9 @@
+#logs
+companiesLog.json
+companiesModDate.json
+
+# Dependency Directories
+node_modules/
+
+# Environmental Variables
+.env
